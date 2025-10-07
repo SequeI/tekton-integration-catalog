@@ -56,7 +56,7 @@ spec:
               fieldPath: metadata.labels['pac.test.appstudio.openshift.io/pull-request']
       script: |
         #!/bin/bash
-        set -euo pipefail
+        set -euox pipefail
 
         COMPONENT_CONTAINER_IMAGE=$(jq -r --arg component_name "$KONFLUX_COMPONENT_NAME" '.components[] | select(.name == $component_name) | .containerImage' <<< "$SNAPSHOT")
         COMPONENT_REVISION=$(jq -r --arg component_name "$KONFLUX_COMPONENT_NAME" '.components[] | select(.name == $component_name) | .source.git.revision' <<< "$SNAPSHOT")
